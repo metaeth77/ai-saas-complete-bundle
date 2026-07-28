@@ -1,20 +1,24 @@
-# AI Business Intelligence & Content Automation SaaS Bundle
+# Ultimate AI Business Intelligence & Marketing Automation SaaS Bundle
 
-A powerful, production-ready micro-SaaS backend bundle built with Python and FastAPI. This suite helps businesses automate three major workflows: transcribing corporate meetings, instantly turning summaries into viral social media content, and automatically managing brand reputation by analyzing customer reviews.
+A comprehensive, production-ready micro-SaaS backend bundle built with Python and FastAPI. This suite automates four major high-value business workflows in one package: corporate meeting analysis, automated multi-platform social media marketing, customer review sentiment management, and framework-based copywriting generation.
 
 ## 📦 What's Inside the Bundle
 
 ### 1. AI Meeting Summarizer (`main.py`)
-- **Audio Transcription**: Converts speech from meeting recordings into text via OpenAI Whisper API (`whisper-1`).
-- **Smart Summarization**: Extracts key topics, definitive decisions, and actionable tasks using Anthropic Claude 3.5 Sonnet.
+- **Audio Transcription**: Converts speech from meeting recordings into accurate text via OpenAI Whisper API (`whisper-1`).
+- **Smart Summarization**: Extracts key topics, definitive decisions, and actionable tasks with deadlines using Anthropic Claude 3.5 Sonnet.
 
 ### 2. AI Social Media Post Generator (`social_uploader.py`)
-- **Content Repurposing**: Takes any text summary and automatically creates optimized posts for different social networks.
+- **Content Repurposing**: Takes any text summary and automatically creates highly optimized posts for different social networks.
 - **Multi-Platform Focus**: Generates 1 structured LinkedIn post, 2 catchy tweets for X, and 1 community post for Telegram.
 
 ### 3. AI Reputation & Review Manager (`review_analyzer.py`)
-- **Sentiment & Feedback Analysis**: Processes lists of customer reviews to extract top-3 compliments and top-3 complaints.
-- **Automated Customer Support**: Instantly generates tailored, polite, and empathetic responses for every review based on star ratings.
+- **Sentiment Analysis**: Processes customer reviews to extract top-3 compliments and top-3 complaints.
+- **Automated Support**: Instantly generates tailored, polite, and empathetic responses based on star ratings.
+
+### 4. AI Marketing Copywriter (`copywriter_generator.py`)
+- **Framework Copywriting**: Instantly generates high-converting marketing copies based on input product parameters and target audience.
+- **Classic Sales Formulas**: Automatically outputs copies structured around **AIDA** (Attention, Interest, Desire, Action) and **PAS** (Problem, Agitation, Solution) frameworks.
 
 ## 🛠️ Tech Stack
 - Python 3.10+
@@ -55,6 +59,10 @@ A powerful, production-ready micro-SaaS backend bundle built with Python and Fas
      ```bash
      uvicorn review_analyzer:app --port 8002 --reload
      ```
+   - Run Marketing Copywriter (Port 8003):
+     ```bash
+     uvicorn copywriter_generator:app --port 8003 --reload
+     ```
 
 ## 🚀 Deployment Ready
-All scripts are fully compatible with hosting platforms like **Render** or **Railway**. Connect your GitHub repository, add your API keys to the dashboard environment variables, and your triple-service AI SaaS backend is live!
+All services are optimized for cloud infrastructure. Connect your GitHub repository to platforms like **Render** or **Railway**, configure your API keys in the environment variables, and your 4-service ИИ SaaS backend is live!

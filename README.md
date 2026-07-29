@@ -1,4 +1,17 @@
-# Ultimate AI Business Intelligence & Marketing Automation SaaS Bundle
+# 💰 PROJECT FOR SALE / ACQUISITION AVAILABLE
+
+**This complete, production-ready 4-in-1 AI codebase is officially available for full acquisition.** 
+* **Asking Price:** $8,000 (Full ownership transfer, single payment, no recurring licensing fees).
+* **Live Product Showcase:** https://ultimate-ai.site
+* **Verified Escrow Platforms:** [Acquire.com](https://acquire.com) | [StartuPage](https://startupage.com)
+
+If you are an entrepreneur or an automation agency looking to buy and instantly commercialize this FastAPI suite for your clients or build a SaaS around it, please contact me directly:
+📩 **Email:** hakan77701@gmail.com
+💬 **Or open a GitHub Issue / send a direct inquiry.**
+
+---
+
+# # Ultimate AI Business Intelligence & Marketing Automation SaaS Bundle
 
 A comprehensive, production-ready micro-SaaS backend bundle built with Python and FastAPI. This suite automates four major high-value business workflows in one package: corporate meeting analysis, automated multi-platform social media marketing, customer review sentiment management, and framework-based copywriting generation.
 

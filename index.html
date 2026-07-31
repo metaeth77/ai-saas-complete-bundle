@@ -394,37 +394,61 @@
     </div>
 
     <!-- ====== MODULE 04 (Copywriter) ====== -->
-    <div class="card">
-        <div class="label-group"><span class="label">Module 04</span></div>
-        <h2 style="font-size: 2rem;">AI Marketing Copywriter</h2>
-        <div class="flex-row">
-            <div class="flex-1">
-                <p style="color: #c8ccd4; margin-bottom:1rem;">
-                    Generate high‑converting marketing copy grounded in proven persuasion frameworks.
-                    The <span class="inline-code">copywriter_generator.py</span> module produces emails, landing pages,
-                    ad copy, and social posts using <strong>AIDA</strong> (Attention → Interest → Desire → Action)
-                    and <strong>PAS</strong> (Problem → Agitation → Solution) structures — automatically.
-                </p>
-                <div style="display: flex; flex-wrap: wrap; gap: 1.2rem;">
-                    <div style="background:rgba(255,255,255,0.04); padding:0.8rem 1.2rem; border-radius:0.4em; border-left:3px solid #6296ff;">
-                        <strong>AIDA Framework</strong><br>
-                        <span style="font-size:0.9rem; color:#b0b6c0;">Guide readers from first glance to conversion</span>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04); padding:0.8rem 1.2rem; border-radius:0.4em; border-left:3px solid #6296ff;">
-                        <strong>PAS Framework</strong><br>
-                        <span style="font-size:0.9rem; color:#b0b6c0;">Problem‑first copy that drives action</span>
-                    </div>
-                    <div style="background:rgba(255,255,255,0.04); padding:0.8rem 1.2rem; border-radius:0.4em; border-left:3px solid #6296ff;">
-                        <strong>Multi‑Format Output</strong><br>
-                        <span style="font-size:0.9rem; color:#b0b6c0;">Emails, ads, landing pages, social posts</span>
-                    </div>
+   <div class="card" style="overflow: hidden;">
+    <!-- Основной контейнер: две колонки -->
+    <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; align-items: stretch;">
+        
+        <!-- ЛЕВАЯ КОЛОНКА (Текст + Сетка) -->
+        <div style="flex: 1.5; min-width: 350px; display: flex; flex-direction: column;">
+            <!-- Тег -->
+            <div class="label-group" style="margin-bottom: 0.75rem;">
+                <span class="label" style="border: 1px solid #3b82f6; color: #3b82f6; padding: 0.2rem 1rem; border-radius: 4px; font-size: 0.85rem;">Module 04</span>
+            </div>
+            
+            <!-- Заголовок -->
+            <h2 style="font-size: 2.5rem; margin: 0 0 1rem 0; letter-spacing: -0.02em;">AI Marketing Copywriter</h2>
+            
+            <!-- Текст -->
+            <p style="color: #c8ccd4; margin-bottom: 1.5rem; line-height: 1.6;">
+                Generate high‑converting marketing copy grounded in proven persuasion frameworks.
+                The <span class="inline-code">copywriter_generator.py</span> module produces emails, landing pages,
+                ad copy, and social posts using <strong>AIDA</strong> (Attention → Interest → Desire → Action)
+                and <strong>PAS</strong> (Problem → Agitation → Solution) structures — automatically.
+            </p>
+
+            <!-- СЕТКА 2x2 С ТОНКИМИ ГРАНИЦАМИ -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #2d3748; border: 1px solid #2d3748; border-radius: 8px; overflow: hidden;">
+                
+                <!-- Блок 1: AIDA -->
+                <div style="background: #111827; padding: 1.25rem;">
+                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.25rem;">AIDA Framework</strong>
+                    <span style="font-size: 0.9rem; color: #b0b6c0;">Structured copy that guides readers from first glance to conversion</span>
+                </div>
+                
+                <!-- Блок 2: PAS -->
+                <div style="background: #111827; padding: 1.25rem;">
+                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.25rem;">PAS Framework</strong>
+                    <span style="font-size: 0.9rem; color: #b0b6c0;">Problem‑first copywriting that resonates emotionally and drives action</span>
+                </div>
+                
+                <!-- Блок 3: Multi-Format (Занимает всю ширину сетки) -->
+                <div style="background: #111827; padding: 1.25rem; grid-column: 1 / -1;">
+                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.25rem;">Multi‑Format Output</strong>
+                    <span style="font-size: 0.9rem; color: #b0b6c0;">Emails, ads, landing pages, and social posts — all from one endpoint</span>
                 </div>
             </div>
-            <div class="flex-1" style="display:flex; justify-content:center; align-items:center; min-height:80px;">
-                <span style="font-size:4rem;">✍️</span>
-            </div>
         </div>
+
+        <!-- ПРАВАЯ КОЛОНКА (Картинка) -->
+        <!-- flex: 1 гарантирует, что она займет минимум 35-40% ширины, объект-фит растянет по высоте -->
+        <div style="flex: 1; min-width: 280px; position: relative;">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" 
+                 alt="AI Marketing Workspace" 
+                 style="width: 100%; height: 100%; min-height: 350px; object-fit: cover; border-radius: 10px;">
+        </div>
+        
     </div>
+</div>
 
     <!-- ====== TECH STACK ====== -->
                     <section id="tech-stack" style="padding: 4rem 0; max-width: 1200px; margin: 0 auto;">

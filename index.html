@@ -13,6 +13,7 @@
             --text-main: #ffffff;
             --accent-color: #58a6ff;
             --border-color: #30363d;
+            --success-color: #2ea44f;
         }
         html { scroll-behavior: smooth; }
         body {
@@ -25,94 +26,137 @@
         }
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
         header { text-align: center; padding: 60px 0; border-bottom: 1px solid var(--border-color); }
-        h1 { color: var(--text-main); font-size: 2.5rem; margin-bottom: 20px; }
-        .subtitle { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px auto; }
-        .cta-container { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        h1 { color: var(--text-main); font-size: 2.5rem; margin-bottom: 20px; font-weight: 700; }
+        .subtitle { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px auto; color: #8b949e; }
+        .cta-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
         .btn { display: inline-block; padding: 12px 24px; font-weight: 600; text-decoration: none; border-radius: 6px; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.9; }
         .btn-primary { background-color: var(--accent-color); color: #ffffff; }
         .btn-secondary { border: 1px solid var(--border-color); color: var(--text-color); }
-        .section-title { text-align: center; color: var(--text-main); font-size: 2rem; margin: 60px 0 30px 0; }
+        .btn-success { background-color: var(--success-color); color: #ffffff; }
+        .section-title { text-align: center; color: var(--text-main); font-size: 2rem; margin: 60px 0 20px 0; font-weight: 600; }
+        .section-subtitle { text-align: center; color: #8b949e; max-width: 700px; margin: 0 auto 40px auto; font-size: 1.1rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 40px; }
         .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; }
-        .card h3 { color: var(--text-main); margin-top: 0; }
-        .feature-list { list-style: none; padding: 0; }
-        .feature-list li { padding: 8px 0; border-bottom: 1px solid var(--border-color); }
-        .feature-list li:last-child { border-bottom: none; }
-        footer { text-align: center; padding: 40px 0; margin-top: 60px; border-top: 1px solid var(--border-color); font-size: 0.9rem; }
+        .card h3 { color: var(--text-main); margin-top: 0; font-size: 1.3rem; }
+        .card p { color: #8b949e; font-size: 0.95rem; }
+        .module-section { margin-top: 60px; padding: 40px; background-color: #10151c; border: 1px solid var(--border-color); border-radius: 12px; }
+        .module-badge { display: inline-block; background-color: rgba(88, 166, 255, 0.1); color: var(--accent-color); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; }
+        .module-title { color: var(--text-main); font-size: 1.8rem; margin: 0 0 15px 0; }
+        .module-desc { color: #8b949e; font-size: 1.1rem; margin-bottom: 30px; }
+        .sub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .sub-card { background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; }
+        .sub-card h4 { color: var(--text-main); margin: 0 0 10px 0; font-size: 1.1rem; }
+        .sub-card p { color: #8b949e; margin: 0; font-size: 0.9rem; }
+        .list-style { list-style: none; padding: 0; margin: 0; }
+        .list-style li { padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+        .list-style li:last-child { border-bottom: none; }
+        footer { text-align: center; padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: #8b949e; }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- ВЕРХНЯЯ ЧАСТЬ / HERO SECTION -->
         <header id="hero">
             <h1>Ultimate AI Business Intelligence & Marketing Automation Suite</h1>
-            <p class="subtitle">A complete, fully scalable B2B SaaS platform infrastructure built for marketing agencies and enterprise automation. Streamline meeting intelligence, automate social distribution, manage review generation, and scale high-converting copy production from a unified cloud architecture.</p>
+            <p class="subtitle">A production-ready 4-in-1 FastAPI backend bundle built for developers and automation agencies. Deploy AI-powered meeting intelligence, social automation, review analytics, and marketing copy generation — all from a single codebase.</p>
             <div class="cta-container">
-                <a href="#modules" class="btn btn-primary">Explore Platform Capabilities</a>
-                <a href="https://github.com" class="btn btn-secondary">Acquire Full Platform Rights</a>
+                <!-- ГЛАВНАЯ КНОПКА ПОКУПКИ ТЕПЕРЬ ТАКЖЕ И ВВЕРХУ -->
+                <a href="https://sideprojectors.com" class="btn btn-success">Buy the Codebase — $8,000</a>
+                <a href="#modules-anchor" class="btn btn-primary">Explore 4 Modules</a>
+                <a href="#tech-stack" class="btn btn-secondary">View Tech Stack</a>
             </div>
         </header>
 
-        <section id="modules">
-            <h2 class="section-title">Four Core Enterprise Modules</h2>
+        <!-- ЧТО ВНУТРИ -->
+        <section id="modules-anchor">
+            <h2 class="section-title">What's Inside</h2>
+            <p class="section-subtitle">Four Powerful Modules. One Codebase. Every module is a standalone FastAPI service — plug into any stack, deploy independently, or run them all together as a unified AI backend.</p>
             <div class="grid">
                 <div class="card">
-                    <h3>🎙 AI Meeting Summarizer</h3>
-                    <p>Advanced async engine that processes raw client audio records into high-impact executive summaries using Whisper and Claude 3.5 architectures.</p>
+                    <h3>🎙️ AI Meeting Summarizer</h3>
+                    <p>main.py — Whisper transcription + Claude 3.5 Sonnet intelligence</p>
                 </div>
                 <div class="card">
                     <h3>📱 AI Social Media Poster</h3>
-                    <p>Automated multi-channel content scheduler with native APIs routing seamlessly into LinkedIn, X (Twitter), and Telegram networks.</p>
+                    <p>social_uploader.py — LinkedIn, X, and Telegram automation</p>
                 </div>
                 <div class="card">
                     <h3>⭐ AI Review Manager</h3>
-                    <p>Automated reputation monitoring layer that aggregates customer sentiment, drafts optimized replies, and protects brand health.</p>
+                    <p>review_analyzer.py — Sentiment analysis & brand monitoring</p>
                 </div>
                 <div class="card">
-                    <h3>✍ AI Marketing Copywriter</h3>
-                    <p>High-tier digital asset generator applying strict algorithmic implementations of industry-proven AIDA and PAS marketing frameworks.</p>
+                    <h3>✍️ AI Marketing Copywriter</h3>
+                    <p>copywriter_generator.py — AIDA & PAS framework generation</p>
                 </div>
             </div>
         </section>
 
-        <section id="tech-stack">
-            <h2 class="section-title">Enterprise-Grade Infrastructure</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Async FastAPI</h3>
-                    <p>High-performance REST API backbone with fully structured automated OpenAPI documentation layers.</p>
+        <!-- MODULE 01 -->
+        <div class="module-section">
+            <div class="module-badge">Module 01</div>
+            <h3 class="module-title">AI Meeting Summarizer</h3>
+            <p class="module-desc">Turn raw meeting recordings into structured, actionable summaries. Powered by OpenAI Whisper for transcription and Anthropic Claude 3.5 Sonnet for intelligent distillation — no manual notes required.</p>
+            <div class="sub-grid">
+                <div class="sub-card">
+                    <h4>Audio → Transcript</h4>
+                    <p>Upload any meeting recording. Whisper transcribes with speaker diarization and high accuracy.</p>
                 </div>
-                <div class="card">
-                    <h3>Multi-Tenant Architecture</h3>
-                    <p>Isolating customer workspaces securely, built ready for enterprise white-labeling and scale.</p>
+                <div class="sub-card">
+                    <h4>Transcript → Summary</h4>
+                    <p>Claude extracts key decisions, action items, and talking points in structured JSON output.</p>
                 </div>
-                <div class="card">
-                    <h3>Docker Infrastructure</h3>
-                    <p>Production-ready containerization ensures 1-click cloud deployment across AWS, GCP, or private servers.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="business-model">
-            <h2 class="section-title">SaaS Business & Acquisition Overview</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Operational Model</h3>
-                    <p>The platform functions as a turnkey digital asset ready to onboard agency clients under monthly recurring subscription packages (B2B SaaS).</p>
-                </div>
-                <div class="card">
-                    <h3>Transfer Details</h3>
-                    <p>Acquisition covers 100% full transfer of the operational infrastructure, custom domains, integrated IP rights, and deployment architectures.</p>
+                <div class="sub-card">
+                    <h4>API-Ready Output</h4>
+                    <p>Return summaries to any frontend or downstream automation via clean FastAPI REST endpoints.</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <footer id="footer">
-            <p>© 2026 Ultimate AI Suite. All rights reserved. Full Operational Platform Acquisition Transfer.</p>
-            <p><a href="#hero" style="color: var(--accent-color); text-decoration: none;">Back to top</a></p>
-        </footer>
-    </div>
+        <!-- MODULE 02 -->
+        <div class="module-section">
+            <div class="module-badge">Module 02</div>
+            <h3 class="module-title">AI Social Media Poster</h3>
+            <p class="module-desc">Automate your content distribution across the most important professional and social channels. The social_uploader.py module generates platform-optimized posts and publishes them directly — no manual copy-pasting.</p>
+            <div class="sub-grid">
+                <div class="sub-card">
+                    <h4>LinkedIn & X</h4>
+                    <p>Long-form professional posts with hashtags, engagement hooks, and character-aware thread generation.</p>
+                </div>
+                <div class="sub-card">
+                    <h4>Telegram</h4>
+                    <p>Channel broadcasts with rich formatting and scheduled delivery parameters.</p>
+                </div>
+                <div class="sub-card">
+                    <h4>What It Does</h4>
+                    <p>AI-generated copy, OAuth2 built-in, scheduled support, rate-limit safe, and retry logic.</p>
+                </div>
+            </div>
+        </div>
 
-</body>
-</html>
+        <!-- MODULE 03 -->
+        <div class="module-section">
+            <div class="module-badge">Module 03</div>
+            <h3 class="module-title">AI Review Manager</h3>
+            <p class="module-desc">Aggregate, analyze, and respond to customer reviews at scale. The review_analyzer.py module uses sentiment analysis to classify feedback, flag urgent issues, and surface trends — giving your clients a real-time pulse on brand perception.</p>
+            <div class="sub-grid">
+                <div class="sub-card">
+                    <h4>Sentiment & Churn</h4>
+                    <p>Positive, neutral, and negative scoring on every review with strict confidence levels.</p>
+                </div>
+                <div class="sub-card">
+                    <h4>Urgency Flagging</h4>
+                    <p>Automatically surface critical reviews that need immediate human support intervention.</p>
+                </div>
+                <div class="sub-card">
+                    <h4>AI Draft Responses</h4>
+                    <p>Generate contextual, on-brand reply drafts for support teams to review and send instantly.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 04 -->
+        <div class="module-section">
+            <div class="module-badge">Module 04</div>
+            <h3 class="module-title">AI Marketing Copywriter</h3>

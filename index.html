@@ -23,53 +23,96 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            background-image: radial-gradient(circle at top right, rgba(88, 166, 255, 0.05), transparent);
         }
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-        header { text-align: center; padding: 60px 0; border-bottom: 1px solid var(--border-color); }
-        h1 { color: var(--text-main); font-size: 2.5rem; margin-bottom: 20px; font-weight: 700; }
-        .subtitle { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px auto; color: #8b949e; }
+        
+        /* КРАСИВЫЙ СТИЛЬНЫЙ ХЕДЕР С ФОНОМ НЕЙРОСЕТИ */
+        header { 
+            text-align: center; 
+            padding: 80px 40px; 
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(rgba(13, 17, 23, 0.85), rgba(13, 17, 23, 0.95)), url('https://gamma.app');
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            margin-bottom: 40px;
+        }
+        h1 { color: var(--text-main); font-size: 2.8rem; margin-bottom: 20px; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .subtitle { font-size: 1.25rem; max-width: 800px; margin: 0 auto 30px auto; color: #aeaeb2; }
         .cta-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-        .btn { display: inline-block; padding: 12px 24px; font-weight: 600; text-decoration: none; border-radius: 6px; transition: opacity 0.2s; }
-        .btn:hover { opacity: 0.9; }
-        .btn-primary { background-color: var(--accent-color); color: #ffffff; }
-        .btn-secondary { border: 1px solid var(--border-color); color: var(--text-color); }
-        .btn-success { background-color: var(--success-color); color: #ffffff; }
-        .section-title { text-align: center; color: var(--text-main); font-size: 2rem; margin: 60px 0 20px 0; font-weight: 600; }
-        .section-subtitle { text-align: center; color: #8b949e; max-width: 700px; margin: 0 auto 40px auto; font-size: 1.1rem; }
+        .btn { display: inline-block; padding: 14px 28px; font-weight: 600; text-decoration: none; border-radius: 6px; transition: transform 0.2s, opacity 0.2s; }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn-primary { background-color: var(--accent-color); color: #ffffff; box-shadow: 0 4px 14px rgba(88, 166, 255, 0.3); }
+        .btn-secondary { border: 1px solid var(--border-color); color: var(--text-color); background-color: rgba(22, 27, 34, 0.5); }
+        .btn-success { background-color: var(--success-color); color: #ffffff; box-shadow: 0 4px 14px rgba(46, 164, 79, 0.3); }
+        
+        .section-title { text-align: center; color: var(--text-main); font-size: 2.2rem; margin: 80px 0 20px 0; font-weight: 700; }
+        .section-subtitle { text-align: center; color: #8b949e; max-width: 700px; margin: 0 auto 50px auto; font-size: 1.1rem; }
+        
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; }
-        .card h3 { color: var(--text-main); margin-top: 0; font-size: 1.3rem; }
-        .card p { color: #8b949e; font-size: 0.95rem; }
-        .module-section { margin-top: 60px; padding: 40px; background-color: #10151c; border: 1px solid var(--border-color); border-radius: 12px; }
-        .module-badge { display: inline-block; background-color: rgba(88, 166, 255, 0.1); color: var(--accent-color); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; }
-        .module-title { color: var(--text-main); font-size: 1.8rem; margin: 0 0 15px 0; }
-        .module-desc { color: #8b949e; font-size: 1.1rem; margin-bottom: 30px; }
-        .sub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .sub-card { background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; }
-        .sub-card h4 { color: var(--text-main); margin: 0 0 10px 0; font-size: 1.1rem; }
-        .sub-card p { color: #8b949e; margin: 0; font-size: 0.9rem; }
+        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 24px; transition: border-color 0.2s; }
+        .card:hover { border-color: var(--accent-color); }
+        .card h3 { color: var(--text-main); margin-top: 0; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .card p { color: #8b949e; font-size: 0.95rem; margin-bottom: 0; }
+        
+        /* БЛОКИ МОДУЛЕЙ С КРАСИВЫМ РАЗДЕЛЕНИЕМ НА КОД И КАРТИНКУ */
+        .module-section { 
+            margin-top: 60px; 
+            padding: 40px; 
+            background-color: #10151c; 
+            border: 1px solid var(--border-color); 
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .module-section { grid-template-columns: 1fr; padding: 24px; gap: 24px; }
+            .module-img { order: -1; max-height: 200px; }
+        }
+        .module-badge { display: inline-block; background-color: rgba(88, 166, 255, 0.1); color: var(--accent-color); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; border: 1px solid rgba(88, 166, 255, 0.2); }
+        .module-title { color: var(--text-main); font-size: 1.9rem; margin: 0 0 15px 0; font-weight: 600; }
+        .module-desc { color: #8b949e; font-size: 1.05rem; margin-bottom: 30px; }
+        .sub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+        .sub-card { background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 18px; border-radius: 8px; }
+        .sub-card h4 { color: var(--text-main); margin: 0 0 8px 0; font-size: 1.05rem; }
+        .sub-card p { color: #8b949e; margin: 0; font-size: 0.85rem; }
+        
+        /* ИИ ИЗОБРАЖЕНИЯ ИЗ ОРИГИНАЛЬНОГО ДИЗАЙНА */
+        .module-img {
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background-color: #0d1117;
+        }
+        
         .list-style { list-style: none; padding: 0; margin: 0; }
-        .list-style li { padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+        .list-style li { padding: 10px 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; display: flex; align-items: center; gap: 10px; }
         .list-style li:last-child { border-bottom: none; }
-        footer { text-align: center; padding: 40px 0; margin-top: 80px; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: #8b949e; }
+        
+        footer { text-align: center; padding: 60px 0; margin-top: 80px; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: #8b949e; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- ВЕРХНЯЯ ЧАСТЬ / HERO SECTION -->
+        <!-- HERO SECTION С НЕОНОВЫМ ИИ-ФОНОМ -->
         <header id="hero">
             <h1>Ultimate AI Business Intelligence & Marketing Automation Suite</h1>
             <p class="subtitle">A production-ready 4-in-1 FastAPI backend bundle built for developers and automation agencies. Deploy AI-powered meeting intelligence, social automation, review analytics, and marketing copy generation — all from a single codebase.</p>
             <div class="cta-container">
-                <!-- ГЛАВНАЯ КНОПКА ПОКУПКИ ТЕПЕРЬ ТАКЖЕ И ВВЕРХУ -->
                 <a href="https://sideprojectors.com" class="btn btn-success">Buy the Codebase — $8,000</a>
                 <a href="#modules-anchor" class="btn btn-primary">Explore 4 Modules</a>
                 <a href="#tech-stack" class="btn btn-secondary">View Tech Stack</a>
             </div>
         </header>
 
-        <!-- ЧТО ВНУТРИ -->
+        <!-- ГЛАВНАЯ СЕТКА С ИКОНКАМИ -->
         <section id="modules-anchor">
             <h2 class="section-title">What's Inside</h2>
             <p class="section-subtitle">Four Powerful Modules. One Codebase. Every module is a standalone FastAPI service — plug into any stack, deploy independently, or run them all together as a unified AI backend.</p>
@@ -93,70 +136,34 @@
             </div>
         </section>
 
-        <!-- MODULE 01 -->
+        <!-- MODULE 01 С ВИЗУАЛЬНОЙ ЗВУКОВОЙ ВОЛНОЙ -->
         <div class="module-section">
-            <div class="module-badge">Module 01</div>
-            <h3 class="module-title">AI Meeting Summarizer</h3>
-            <p class="module-desc">Turn raw meeting recordings into structured, actionable summaries. Powered by OpenAI Whisper for transcription and Anthropic Claude 3.5 Sonnet for intelligent distillation — no manual notes required.</p>
-            <div class="sub-grid">
-                <div class="sub-card">
-                    <h4>Audio → Transcript</h4>
-                    <p>Upload any meeting recording. Whisper transcribes with speaker diarization and high accuracy.</p>
-                </div>
-                <div class="sub-card">
-                    <h4>Transcript → Summary</h4>
-                    <p>Claude extracts key decisions, action items, and talking points in structured JSON output.</p>
-                </div>
-                <div class="sub-card">
-                    <h4>API-Ready Output</h4>
-                    <p>Return summaries to any frontend or downstream automation via clean FastAPI REST endpoints.</p>
+            <div>
+                <div class="module-badge">Module 01</div>
+                <h3 class="module-title">🎙️ AI Meeting Summarizer</h3>
+                <p class="module-desc">Turn raw meeting recordings into structured, actionable summaries. Powered by OpenAI Whisper for transcription and Anthropic Claude 3.5 Sonnet for intelligent distillation — no manual notes required.</p>
+                <div class="sub-grid">
+                    <div class="sub-card">
+                        <h4>Audio → Transcript</h4>
+                        <p>Upload audio. Whisper transcribes with diarization and high accuracy.</p>
+                    </div>
+                    <div class="sub-card">
+                        <h4>Transcript → Summary</h4>
+                        <p>Claude extracts key decisions and action items into JSON output.</p>
+                    </div>
+                    <div class="sub-card">
+                        <h4>API-Ready Output</h4>
+                        <p>Return structured data via clean FastAPI REST endpoints.</p>
+                    </div>
                 </div>
             </div>
+            <!-- Ссылка на оригинальную звуковую ИИ-волну из презентации -->
+            <img class="module-img" src="https://gamma.app" alt="Audio AI Generation Visualization">
         </div>
 
-        <!-- MODULE 02 -->
+        <!-- MODULE 02 С КАРТИНКОЙ КАНАЛОВ СВЯЗИ -->
         <div class="module-section">
-            <div class="module-badge">Module 02</div>
-            <h3 class="module-title">AI Social Media Poster</h3>
-            <p class="module-desc">Automate your content distribution across the most important professional and social channels. The social_uploader.py module generates platform-optimized posts and publishes them directly — no manual copy-pasting.</p>
-            <div class="sub-grid">
-                <div class="sub-card">
-                    <h4>LinkedIn & X</h4>
-                    <p>Long-form professional posts with hashtags, engagement hooks, and character-aware thread generation.</p>
-                </div>
-                <div class="sub-card">
-                    <h4>Telegram</h4>
-                    <p>Channel broadcasts with rich formatting and scheduled delivery parameters.</p>
-                </div>
-                <div class="sub-card">
-                    <h4>What It Does</h4>
-                    <p>AI-generated copy, OAuth2 built-in, scheduled support, rate-limit safe, and retry logic.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- MODULE 03 -->
-        <div class="module-section">
-            <div class="module-badge">Module 03</div>
-            <h3 class="module-title">AI Review Manager</h3>
-            <p class="module-desc">Aggregate, analyze, and respond to customer reviews at scale. The review_analyzer.py module uses sentiment analysis to classify feedback, flag urgent issues, and surface trends — giving your clients a real-time pulse on brand perception.</p>
-            <div class="sub-grid">
-                <div class="sub-card">
-                    <h4>Sentiment & Churn</h4>
-                    <p>Positive, neutral, and negative scoring on every review with strict confidence levels.</p>
-                </div>
-                <div class="sub-card">
-                    <h4>Urgency Flagging</h4>
-                    <p>Automatically surface critical reviews that need immediate human support intervention.</p>
-                </div>
-                <div class="sub-card">
-                    <h4>AI Draft Responses</h4>
-                    <p>Generate contextual, on-brand reply drafts for support teams to review and send instantly.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- MODULE 04 -->
-        <div class="module-section">
-            <div class="module-badge">Module 04</div>
-            <h3 class="module-title">AI Marketing Copywriter</h3>
+            <div>
+                <div class="module-badge">Module 02</div>
+                <h3 class="module-title">📱 AI Social Media Poster</h3>
+                <p class="module-desc">Automate your content distribution across the most important professional and social channels. The social_uploader.py module generates platform-optimized posts and publishes them directly — no manual copy-pasting.</p>

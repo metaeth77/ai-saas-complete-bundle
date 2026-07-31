@@ -427,36 +427,60 @@
     </div>
 
     <!-- ====== TECH STACK ====== -->
-                    <section id="tech-stack">
-            <h2 class="section-title">Built With the Best Tools</h2>
-            <p class="section-subtitle">Every dependency is production-tested, well-documented, and actively maintained. This codebase is designed to be extended, not just deployed.</p>
-            
-            <!-- ОБНОВЛЕННАЯ СЕТКА: КАРТОЧКИ БУДУТ В СТОЛБИКИ, А НЕ ОДНА ПОД ДРУГОЙ -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 24px; margin-bottom: 40px;">
-                <div class="card">
-                    <h3>🐍 Python 3.11+</h3>
-                    <p>Modern async support, strict type hints, and a mature enterprise ecosystem.</p>
-                </div>
-                <div class="card">
-                    <h3>⚡ FastAPI</h3>
-                    <p>Async REST framework with auto-generated Swagger UI and interactive OpenAPI docs.</p>
-                </div>
-                <div class="card">
-                    <h3>🤖 OpenAI API</h3>
-                    <p>Whisper infrastructure for transcription, GPT-4 for copy and advanced analysis tasks.</p>
-                </div>
-                <div class="card">
-                    <h3>🧠 Anthropic Claude 3.5</h3>
-                    <p>State-of-the-art reasoning for meeting summaries and complex data extraction.</p>
-                </div>
-            </div>
+                    <section id="tech-stack" style="padding: 4rem 0; max-width: 1200px; margin: 0 auto;">
 
-            <!-- ШИРОКАЯ КАРТИНКА СНИЗУ -->
-                        <!-- УЛЬТИМАТИВНОЕ РАСТЯГИВАНИЕ НА 100% ШИРИНЫ ЭКРАНА -->
-            <div style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 3.5rem; text-align: center; overflow: hidden;">
-                <img src="https://unsplash.com" style="width: 100% !important; max-width: 100% !important; height: auto !important; max-height: 500px; object-fit: cover; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; display: block;" alt="FastAPI Developer Laptop Infrastructure"/>
+    <!-- ОСНОВНОЙ КОНТЕЙНЕР С ДВУМЯ КОЛОНКАМИ (Левая + Правая) -->
+    <div style="display: flex; gap: 3rem; align-items: stretch; flex-wrap: wrap;">
+        
+        <!-- ЛЕВАЯ ЧАСТЬ: Заголовки + Сетка 2х2 -->
+        <div style="flex: 2; min-width: 350px;">
+            <h2 class="section-title" style="color: #fff; font-size: 2.2rem; margin-bottom: 0.5rem;">Built With the Best Tools</h2>
+            <p style="color: #a0aec0; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+                Every dependency is production-tested, well-documented, and actively maintained. This codebase is designed to be extended, not just deployed.
+            </p>
+            
+            <!-- СЕТКА 2x2 ДЛЯ КАРТОЧЕК -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <!-- Карточка 1 -->
+                <div class="card" style="background: #1a202c; border: 1px solid #2d3748; border-radius: 12px; padding: 1.5rem; transition: all 0.3s; hover:background #2d3748;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.75rem; color: #63b3ed;">🐍</div>
+                    <h3 style="color: #fff; font-size: 1.25rem; font-weight: 700; margin: 0 0 0.75rem 0;">Python 3.11+</h3>
+                    <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.5; margin: 0;">Modern async support, strict type hints, and a mature enterprise ecosystem.</p>
+                </div>
+                
+                <!-- Карточка 2 -->
+                <div class="card" style="background: #1a202c; border: 1px solid #2d3748; border-radius: 12px; padding: 1.5rem; transition: all 0.3s;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.75rem; color: #f6ad55;">⚡</div>
+                    <h3 style="color: #fff; font-size: 1.25rem; font-weight: 700; margin: 0 0 0.75rem 0;">FastAPI</h3>
+                    <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.5; margin: 0;">Async REST framework with auto-generated Swagger UI and interactive OpenAPI docs.</p>
+                </div>
+                
+                <!-- Карточка 3 -->
+                <div class="card" style="background: #1a202c; border: 1px solid #2d3748; border-radius: 12px; padding: 1.5rem; transition: all 0.3s;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.75rem; color: #81e6d9;">🤖</div>
+                    <h3 style="color: #fff; font-size: 1.25rem; font-weight: 700; margin: 0 0 0.75rem 0;">OpenAI API</h3>
+                    <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.5; margin: 0;">Whisper infrastructure for transcription, GPT-4 for copy and advanced analysis tasks.</p>
+                </div>
+                
+                <!-- Карточка 4 -->
+                <div class="card" style="background: #1a202c; border: 1px solid #2d3748; border-radius: 12px; padding: 1.5rem; transition: all 0.3s;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.75rem; color: #b794f4;">🧠</div>
+                    <h3 style="color: #fff; font-size: 1.25rem; font-weight: 700; margin: 0 0 0.75rem 0;">Anthropic Claude 3.5</h3>
+                    <p style="color: #a0aec0; font-size: 0.95rem; line-height: 1.5; margin: 0;">State-of-the-art reasoning for meeting summaries and complex data extraction.</p>
+                </div>
             </div>
-        </section>
+        </div>
+
+        <!-- ПРАВАЯ ЧАСТЬ: Картинка -->
+        <div style="flex: 1; min-width: 300px; position: relative; display: flex;">
+            <!-- Ссылку на картинку замените на свою -->
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" 
+                 alt="Developer Laptop with Code" 
+                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: 0 0 20px rgba(99, 179, 237, 0.1);">
+        </div>
+        
+    </div>
+</section>
 
     <!-- ====== FEATURES ====== -->
     <div class="card">

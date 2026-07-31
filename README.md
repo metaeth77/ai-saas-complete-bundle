@@ -2,7 +2,7 @@
 
 **This complete, production-ready 4-in-1 AI codebase is officially available for full acquisition.** 
 * **Asking Price:** $8,000 (Full ownership transfer, single payment, no recurring licensing fees).
-* **Live Product Showcase:** ultimate-ai.site
+* **Live Product Showcase:** https://ultimate-ai.site/
 * **Verified Escrow Platforms:** [SideProjectors](https://sideprojectors.com) | [IndieMaker](https://indiemaker.co) | Escrow.com
 
 If you are an entrepreneur or an automation agency looking to buy and instantly commercialize this FastAPI suite for your clients or build a SaaS around it, please contact me directly:

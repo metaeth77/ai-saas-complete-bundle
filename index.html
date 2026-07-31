@@ -1,176 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate AI Business Intelligence & Marketing Automation Suite</title>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ultimate AI Suite – 4-in-1 FastAPI Backend</title>
+    <!-- Google Font: Geist (same as original) -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --text-color: #c9d1d9;
-            --text-main: #ffffff;
-            --accent-color: #58a6ff;
-            --border-color: #30363d;
-            --success-color: #2ea44f;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+        /* ── Reset & base ── */
+        * {
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            box-sizing: border-box;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        
-        /* ШИРОКИЙ И DIЗУАЛЬНО ПРИВЛЕКАТЕЛЬНЫЙ ХЕДЕР */
-        header { 
-            text-align: center; 
-            padding: 80px 20px; 
-            border: 1px solid var(--border-color);
-            background-color: #10151c;
-            border-radius: 12px;
-            margin-bottom: 40px;
+
+        body {
+            font-family: 'Geist', sans-serif;
+            background: #0b0f16; /* deep navy base */
+            color: #EBEDF0;
+            line-height: 1.5;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
-        h1 { color: var(--text-main); font-size: 2.6rem; margin-bottom: 20px; font-weight: 700; }
-        .subtitle { font-size: 1.2rem; max-width: 900px; margin: 0 auto 30px auto; color: #8b949e; }
-        .cta-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-        
-        /* СТИЛЬНЫЕ КНОПКИ */
-        .btn { display: inline-block; padding: 14px 28px; font-weight: 600; text-decoration: none; border-radius: 6px; transition: opacity 0.2s; }
-        .btn:hover { opacity: 0.9; }
-        .btn-primary { background-color: var(--accent-color); color: #ffffff; }
-        .btn-secondary { border: 1px solid var(--border-color); color: var(--text-color); background-color: rgba(22, 27, 34, 0.5); }
-        .btn-success { background-color: var(--success-color); color: #ffffff; font-size: 1.1rem; }
-        
-        .section-title { text-align: center; color: var(--text-main); font-size: 2.2rem; margin: 80px 0 20px 0; font-weight: 700; }
-        .section-subtitle { text-align: center; color: #8b949e; max-width: 800px; margin: 0 auto 50px auto; font-size: 1.1rem; }
-        
-        /* СЕТКА ЧТО ВНУТРИ */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 40px; }
-        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 28px; }
-        .card h3 { color: var(--text-main); margin-top: 0; font-size: 1.3rem; }
-        .card p { color: #8b949e; font-size: 0.95rem; margin-bottom: 0; }
-        
-        /* ПОЛНОЭКРАННЫЕ БЛОКИ МОДУЛЕЙ БЕЗ СЛОМАННЫХ КАРТИНОК */
-        .module-section { 
-            margin-top: 40px; 
-            padding: 40px; 
-            background-color: #10151c; 
-            border: 1px solid var(--border-color); 
-            border-radius: 12px;
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
         }
-        .module-badge { display: inline-block; background-color: rgba(88, 166, 255, 0.1); color: var(--accent-color); padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; border: 1px solid rgba(88, 166, 255, 0.2); }
-        .module-title { color: var(--text-main); font-size: 2rem; margin: 0 0 15px 0; font-weight: 700; }
-        .module-desc { color: #8b949e; font-size: 1.1rem; margin-bottom: 35px; max-width: 1000px; }
-        
-        /* СЕТКА ВНУТРИ МОДУЛЕЙ НА ВСЮ ШИРИНУ */
-        .sub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .sub-card { background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 24px; border-radius: 8px; }
-        .sub-card h4 { color: var(--text-main); margin: 0 0 12px 0; font-size: 1.15rem; font-weight: 600; }
-        .sub-card p { color: #8b949e; margin: 0; font-size: 0.95rem; }
-        
-        .list-style { list-style: none; padding: 0; margin: 0; }
-        .list-style li { padding: 12px 0; border-bottom: 1px solid var(--border-color); font-size: 1rem; color: #8b949e; }
-        .list-style li::before { content: "✓ "; color: var(--accent-color); font-weight: bold; margin-right: 8px; }
-        
-        footer { text-align: center; padding: 60px 0; margin-top: 80px; border-top: 1px solid var(--border-color); font-size: 0.95rem; color: #8b949e; }
+
+        /* ── Typography ── */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #F2F5FA;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .accent-text {
+            color: #6296ff;
+        }
+
+        /* ── Card style ── */
+        .card {
+            background: rgba(16, 22, 32, 0.75);
+            backdrop-filter: blur(20px) saturate(170%);
+            border-radius: 0.6em;
+            padding: 2.5em 2em;
+            margin-bottom: 2.5em;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(166, 211, 255, 0.15);
+        }
+
+        /* ── Buttons ── */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8em;
+            margin-top: 1.5em;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.7em 1.8em;
+            border-radius: 0.375em;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #487CFF, #7BAFFF);
+            color: #000;
+            box-shadow: 0 4px 12px rgba(72, 124, 255, 0.3);
+        }
+        .btn-primary:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(72, 124, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #6296ff;
+            box-shadow: inset 0 0 0 2px #6296ff;
+        }
+        .btn-outline:hover {
+            background: rgba(98, 150, 255, 0.08);
+            transform: scale(1.03);
+        }
+
+        /* ── Labels ── */
+        .label-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            margin-bottom: 0.8em;
+        }
+
+        .label {
+            display: inline-block;
+            padding: 0.2em 0.8em;
+            border-radius: 2em;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            background: rgba(98, 150, 255, 0.15);
+            color: #6296ff;
+            border: 1px solid rgba(98, 150, 255, 0.2);
+        }
+
+        .label-solid {
+            background: #6296ff;
+            color: #000;
+            border: none;
+        }
+
+        /* ── Grid / Layout ── */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5em;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5em;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5em;
+        }
+
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5em;
+            align-items: flex-start;
+        }
+
+        .flex-1 { flex: 1; min-width: 200px; }
+
+        /* ── Module cards ── */
+        .module-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 0.4em;
+            padding: 1.5em 1.2em;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: background 0.2s;
+        }
+        .module-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+        }
+        .module-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3em;
+        }
+        .module-card p {
+            font-size: 0.95rem;
+            color: #c8ccd4;
+        }
+
+        .module-icon {
+            font-size: 1.8rem;
+            margin-right: 0.3em;
+        }
+
+        .feature-number {
+            font-size: 3.3rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #6296ff;
+            margin-bottom: 0.1em;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+        .bullet-list li {
+            padding: 0.3em 0;
+            padding-left: 1.5em;
+            position: relative;
+        }
+        .bullet-list li::before {
+            content: "▹";
+            color: #6296ff;
+            position: absolute;
+            left: 0;
+        }
+
+        .inline-code {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.1em 0.4em;
+            border-radius: 0.2em;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        .emoji-big {
+            font-size: 2.2rem;
+            display: inline-block;
+            margin-right: 0.2em;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .card { padding: 1.8em 1.2em; }
+        }
+
+        /* small tweaks */
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 1em; }
+        .mb-1 { margin-bottom: 1em; }
+        .mb-2 { margin-bottom: 2em; }
+        .gap-1 { gap: 1em; }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin: 1.5em 0;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 2em;
+            padding: 1.5em 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8b8f96;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer a {
+            color: #6296ff;
+        }
     </style>
 </head>
 <body>
+<div class="container">
 
-    <div class="container">
-        <!-- HERO SECTION -->
-        <header id="hero">
-            <h1>Ultimate AI Business Intelligence & Marketing Automation Suite</h1>
-            <p class="subtitle">A production-ready 4-in-1 FastAPI backend bundle built for developers and automation agencies. Deploy AI-powered meeting intelligence, social automation, review analytics, and marketing copy generation — all from a single codebase.</p>
-            <div class="cta-container">
-                <a href="https://github.com" class="btn btn-success">Buy the Codebase — $8,000</a>
-                <a href="#modules-anchor" class="btn btn-primary">Explore 4 Modules</a>
-                <a href="#tech-stack" class="btn btn-secondary">View Tech Stack</a>
+    <!-- ====== HERO CARD ====== -->
+    <div class="card">
+        <h1 style="font-size: 2.4rem; margin-bottom: 0.4rem;">
+            Ultimate AI Business Intelligence &amp; Marketing Automation Suite
+        </h1>
+        <p style="font-size: 1.2rem; color: #d0d5de; max-width: 800px;">
+            A production-ready <strong>4-in-1 FastAPI backend bundle</strong> built for developers and automation agencies.
+            Deploy AI-powered meeting intelligence, social automation, review analytics, and marketing copy generation — all from a single codebase.
+        </p>
+        <div class="btn-group">
+            <a href="#purchase" class="btn btn-primary">Buy the Codebase</a>
+            <a href="#docs" class="btn btn-outline">View Documentation</a>
+        </div>
+    </div>
+
+    <!-- ====== WHAT'S INSIDE ====== -->
+    <div class="card">
+        <div class="label-group">
+            <span class="label label-solid">What's Inside</span>
+        </div>
+        <h2 style="font-size: 2rem; margin-bottom: 0.3rem;">Four Powerful Modules. One Codebase.</h2>
+        <p style="color: #c8ccd4; margin-bottom: 1.5rem;">
+            Every module is a standalone FastAPI service — plug into any stack, deploy independently, or run them all together as a unified AI backend.
+        </p>
+        <div class="grid-4">
+            <div class="module-card">
+                <h4><span class="module-icon">🎙️</span> AI Meeting Summarizer</h4>
+                <p><span class="inline-code">main.py</span> — Whisper transcription + Claude 3.5 Sonnet intelligence</p>
             </div>
-        </header>
+            <div class="module-card">
+                <h4><span class="module-icon">📱</span> AI Social Media Poster</h4>
+                <p><span class="inline-code">social_uploader.py</span> — LinkedIn, X, and Telegram automation</p>
+            </div>
+            <div class="module-card">
+                <h4><span class="module-icon">⭐</span> AI Review Manager</h4>
+                <p><span class="inline-code">review_analyzer.py</span> — Sentiment analysis &amp; brand monitoring</p>
+            </div>
+            <div class="module-card">
+                <h4><span class="module-icon">✍️</span> AI Marketing Copywriter</h4>
+                <p><span class="inline-code">copywriter_generator.py</span> — AIDA &amp; PAS framework generation</p>
+            </div>
+        </div>
+    </div>
 
-        <!-- WHAT'S INSIDE -->
-        <section id="modules-anchor">
-            <h2 class="section-title">What's Inside</h2>
-            <p class="section-subtitle">Four Powerful Modules. One Codebase. Every module is a standalone FastAPI service — plug into any stack, deploy independently, or run them all together as a unified AI backend.</p>
-            <div class="grid">
-                <div class="card">
-                    <h3>🎙️ AI Meeting Summarizer</h3>
-                    <p>main.py — Whisper transcription + Claude 3.5 Sonnet intelligence</p>
-                </div>
-                <div class="card">
-                    <h3>📱 AI Social Media Poster</h3>
-                    <p>social_uploader.py — LinkedIn, X, and Telegram automation</p>
-                </div>
-                <div class="card">
-                    <h3>⭐ AI Review Manager</h3>
-                    <p>review_analyzer.py — Sentiment analysis & brand monitoring</p>
-                </div>
-                <div class="card">
-                    <h3>✍️ AI Marketing Copywriter</h3>
-                    <p>copywriter_generator.py — AIDA & PAS framework generation</p>
+    <!-- ====== MODULE 01 (Meeting Summarizer) ====== -->
+    <div class="card" style="background: rgba(16,22,32,0.6);">
+        <div class="flex-row">
+            <div class="flex-1">
+                <div class="label-group"><span class="label">Module 01</span></div>
+                <h2 style="font-size: 2rem;">AI Meeting Summarizer</h2>
+                <p style="color: #c8ccd4;">
+                    Turn raw meeting recordings into structured, actionable summaries. Powered by
+                    <strong>OpenAI Whisper</strong> for transcription and <strong>Anthropic Claude 3.5 Sonnet</strong>
+                    for intelligent distillation — no manual notes required.
+                </p>
+                <div style="margin-top: 1.2rem;">
+                    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                        <div><span style="color:#6296ff; font-size:1.5rem;">➜</span> <strong>Audio → Transcript</strong><br><span style="font-size:0.9rem; color:#b0b6c0;">Whisper diarization &amp; accuracy</span></div>
+                        <div><span style="color:#6296ff; font-size:1.5rem;">➜</span> <strong>Transcript → Summary</strong><br><span style="font-size:0.9rem; color:#b0b6c0;">Claude extracts decisions, action items</span></div>
+                        <div><span style="color:#6296ff; font-size:1.5rem;">➜</span> <strong>API-Ready Output</strong><br><span style="font-size:0.9rem; color:#b0b6c0;">FastAPI REST endpoints</span></div>
+                    </div>
                 </div>
             </div>
-        </section>
+            <div class="flex-1" style="display:flex; justify-content:center; align-items:center; min-height:120px; background: rgba(0,40,128,0.2); border-radius:0.6em; padding:1em;">
+                <span style="font-size:4rem;">🎤</span>
+                <!-- Placeholder for illustration – you can replace with an image -->
+            </div>
+        </div>
+    </div>
 
-        <!-- MODULE 01 (ШИРОКИЙ ФОРМАТ) -->
-        <div class="module-section">
-            <div class="module-badge">Module 01</div>
-            <h3 class="module-title">🎙️ AI Meeting Summarizer</h3>
-            <p class="module-desc">Turn raw meeting recordings into structured, actionable summaries. Powered by OpenAI Whisper for transcription and Anthropic Claude 3.5 Sonnet for intelligent distillation — no manual notes required.</p>
-            <div class="sub-grid">
-                <div class="sub-card">
-                    <h4>Audio → Transcript</h4>
-                    <p>Upload any meeting recording. Whisper transcribes with speaker diarization and high accuracy.</p>
+    <!-- ====== MODULE 02 (Social Media) ====== -->
+    <div class="card">
+        <div class="label-group"><span class="label">Module 02</span></div>
+        <h2 style="font-size: 2rem;">AI Social Media Poster</h2>
+        <div class="grid-2">
+            <div>
+                <p style="color: #c8ccd4; margin-bottom:1rem;">
+                    Automate your content distribution across the most important professional and social channels.
+                    The <span class="inline-code">social_uploader.py</span> module generates platform-optimized posts
+                    and publishes them directly — no manual copy-pasting.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                    <div><span style="color:#6296ff;">◆</span> <strong>LinkedIn</strong> – long‑form posts with hashtags</div>
+                    <div><span style="color:#6296ff;">◆</span> <strong>X (Twitter)</strong> – thread generation &amp; character‑aware copy</div>
+                    <div><span style="color:#6296ff;">◆</span> <strong>Telegram</strong> – channel broadcasts with rich formatting</div>
                 </div>
-                <div class="sub-card">
-                    <h4>Transcript → Summary</h4>
-                    <p>Claude extracts key decisions, action items, and talking points in structured JSON output.</p>
+            </div>
+            <div style="background: rgba(31,42,93,0.4); border-radius:0.6em; padding:1.2em;">
+                <h4 style="color:#F2F5FA;">What It Does</h4>
+                <ul class="bullet-list">
+                    <li>AI‑generated post copy per platform</li>
+                    <li>OAuth2 authentication built‑in</li>
+                    <li>Scheduled posting support</li>
+                    <li>Error handling &amp; retry logic</li>
+                    <li>Rate‑limit safe API calls</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== MODULE 03 (Review Manager) ====== -->
+    <div class="card" style="background: rgba(16,22,32,0.6);">
+        <div class="label-group"><span class="label">Module 03</span></div>
+        <h2 style="font-size: 2rem;">AI Review Manager</h2>
+        <p style="color: #c8ccd4; margin-bottom:1.2rem;">
+            Aggregate, analyze, and respond to customer reviews at scale. The <span class="inline-code">review_analyzer.py</span>
+            module uses sentiment analysis to classify feedback, flag urgent issues, and surface trends — giving your clients a real‑time pulse on brand perception.
+        </p>
+        <div class="grid-4">
+            <div>
+                <div style="background:rgba(98,150,255,0.1); border-radius:0.4em; padding:0.8em; text-align:center;">
+                    <div style="font-size:2.5rem;">📊</div>
+                    <h4 style="margin:0.3rem 0 0.1rem;">Sentiment Classification</h4>
+                    <p style="font-size:0.9rem; color:#b0b6c0;">Positive, neutral, negative scoring</p>
                 </div>
-                <div class="sub-card">
-                    <h4>API-Ready Output</h4>
-                    <p>Return summaries to any frontend or downstream automation via clean FastAPI REST endpoints.</p>
+            </div>
+            <div>
+                <div style="background:rgba(98,150,255,0.1); border-radius:0.4em; padding:0.8em; text-align:center;">
+                    <div style="font-size:2.5rem;">🔔</div>
+                    <h4 style="margin:0.3rem 0 0.1rem;">Urgency Flagging</h4>
+                    <p style="font-size:0.9rem; color:#b0b6c0;">Surface critical reviews immediately</p>
+                </div>
+            </div>
+            <div>
+                <div style="background:rgba(98,150,255,0.1); border-radius:0.4em; padding:0.8em; text-align:center;">
+                    <div style="font-size:2.5rem;">📈</div>
+                    <h4 style="margin:0.3rem 0 0.1rem;">Trend Detection</h4>
+                    <p style="font-size:0.9rem; color:#b0b6c0;">Track sentiment over time</p>
+                </div>
+            </div>
+            <div>
+                <div style="background:rgba(98,150,255,0.1); border-radius:0.4em; padding:0.8em; text-align:center;">
+                    <div style="font-size:2.5rem;">✍️</div>
+                    <h4 style="margin:0.3rem 0 0.1rem;">AI Draft Responses</h4>
+                    <p style="font-size:0.9rem; color:#b0b6c0;">Contextual reply drafts</p>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- MODULE 02 (ШИРОКИЙ ФОРМАТ) -->
-        <div class="module-section">
-            <div class="module-badge">Module 02</div>
-            <h3 class="module-title">📱 AI Social Media Poster</h3>
-            <p class="module-desc">Automate your content distribution across the most important professional and social channels. The social_uploader.py module generates platform-optimized posts and publishes them directly — no manual copy-pasting.</p>
-            <div class="sub-grid">
-                <div class="sub-card">
-                    <h4>LinkedIn</h4>
-                    <p>Long-form professional posts with hashtags and engagement hooks tailored for business networks.</p>
-                </div>
-                <div class="sub-card">
-                    <h4>X (Twitter)</h4>
-                    <p>Thread generation and character-aware copy with viral framing mechanics.</p>
-                </div>
-                <div class="sub-card">
-                    <h4>Telegram</h4>
-                    <p>Channel broadcasts with rich formatting and scheduled delivery automated parameters.</p>
+    <!-- ====== MODULE 04 (Copywriter) ====== -->
+    <div class="card">
+        <div class="label-group"><span class="label">Module 04</span></div>
+        <h2 style="font-size: 2rem;">AI Marketing Copywriter</h2>
+        <div class="flex-row">
+            <div class="flex-1">
+                <p style="color: #c8ccd4; margin-bottom:1rem;">
+                    Generate high‑converting marketing copy grounded in proven persuasion frameworks.
+                    The <span class="inline-code">copywriter_generator.py</span> module produces emails, landing pages,
+                    ad copy, and social posts using <strong>AIDA</strong> (Attention → Interest → Desire → Action)
+                    and <strong>PAS</strong> (Problem → Agitation → Solution) structures — automatically.
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.2rem;">
+                    <div style="background:rgba(255,255,255,0.04); padding:0.8rem 1.2rem; border-radius:0.4em; border-left:3px solid #6296ff;">
+                        <strong>AIDA Framework</strong><br>
+                        <span style="font-size:0.9rem; color:#b0b6c0;">Guide readers from first glance to conversion</span>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.04); padding:0.8rem 1.2rem; border-radius:0.4em; border-left:3px solid #6296ff;">
+                        <strong>PAS Framework</strong><br>
+                        <span style="font-size:0.9rem; color:#b0b6c0;">Problem‑first copy that drives action</span>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.04); padding:0.8rem 1.2rem; border-radius:0.4em; border-left:3px solid #6296ff;">
+                        <strong>Multi‑Format Output</strong><br>
+                        <span style="font-size:0.9rem; color:#b0b6c0;">Emails, ads, landing pages, social posts</span>
+                    </div>
                 </div>
             </div>
+            <div class="flex-1" style="display:flex; justify-content:center; align-items:center; min-height:80px;">
+                <span style="font-size:4rem;">✍️</span>
+            </div>
         </div>
+    </div>
 
-        <!-- MODULE 03 (ШИРОКИЙ ФОРМАТ) -->
-        <div class="module-section">
-            <div class="module-badge">Module 03</div>
-            <h3 class="module-title">⭐ AI Review Manager</h3>
-            <p class="module-desc">Aggregate, analyze, and respond to customer reviews at scale. The review_analyzer.py module uses sentiment analysis to classify feedback, flag urgent issues, and surface trends — giving your clients a real-time pulse on brand perception.</p>
-            <div class="sub-grid">
-                <div class="sub-card">
-                    <h4>Sentiment Classification</h4>
-                    <p>Positive, neutral, and negative scoring on every review with specialized confidence levels.</p>
-                </div>
-                <div class="sub-card">
-                    <h4>Urgency Flagging</h4>
-                    <p>Automatically surface critical negative reviews that need immediate human support intervention.</p>
-                </div>
+    <!-- ====== TECH STACK ====== -->
+    <div class="card">
+        <div class="label-group"><span class="label label-solid">Tech Stack</span></div>
+        <h2 style="font-size: 2rem;">Built With the Best Tools</h2>
+        <p style="color: #c8ccd4; margin-bottom:1.5rem;">
+            Every dependency is production‑tested, well‑documented, and actively maintained.
+            This codebase is designed to be extended, not just deployed.
+        </p>
+        <div class="grid-3">
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:1.2rem; border:1px solid rgba(255,255,255,0.06);">
+                <div style="font-size:2.2rem; margin-bottom:0.3rem;">🐍</div>
+                <h4>Python 3.11+</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">Async support, type hints, mature ecosystem</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:1.2rem; border:1px solid rgba(255,255,255,0.06);">
+                <div style="font-size:2.2rem; margin-bottom:0.3rem;">⚡</div>
+                <h4>FastAPI</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">Async REST + auto‑generated OpenAPI docs</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:1.2rem; border:1px solid rgba(255,255,255,0.06);">
+                <div style="font-size:2.2rem; margin-bottom:0.3rem;">🧠</div>
+                <h4>OpenAI API</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">Whisper, GPT‑4 for copy &amp; analysis</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:1.2rem; border:1px solid rgba(255,255,255,0.06);">
+                <div style="font-size:2.2rem; margin-bottom:0.3rem;">🧬</div>
+                <h4>Anthropic Claude 3.5</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">State‑of‑the‑art reasoning for summaries</p>
+            </div>
+        </div>
+        <!-- Image placeholder (optional) -->
+        <div style="margin-top:1.5rem; background:rgba(0,40,128,0.15); border-radius:0.4em; padding:1rem; text-align:center; border:1px dashed rgba(98,150,255,0.2);">
+            <span style="color:#8b8f96;">[ Screenshot: developer laptop with FastAPI code ]</span>
+        </div>
+    </div>
+
+    <!-- ====== FEATURES ====== -->
+    <div class="card">
+        <div class="label-group"><span class="label label-solid">Features</span></div>
+        <h2 style="font-size: 2rem;">Everything You Need to Ship</h2>
+        <div class="grid-4" style="margin-top:1.2rem;">
+            <div class="text-center">
+                <div class="feature-number">4</div>
+                <h4 style="margin:0.2rem 0;">AI Modules</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">Fully independent deployable services</p>
+            </div>
+            <div class="text-center">
+                <div class="feature-number">3</div>
+                <h4 style="margin:0.2rem 0;">Platforms</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">LinkedIn, X, Telegram</p>
+            </div>
+            <div class="text-center">
+                <div class="feature-number">2</div>
+                <h4 style="margin:0.2rem 0;">Frameworks</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">AIDA &amp; PAS copywriting</p>
+            </div>
+            <div class="text-center">
+                <div class="feature-number">1</div>
+                <h4 style="margin:0.2rem 0;">Codebase</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">Single purchase, unlimited deployments</p>
+            </div>
+        </div>
+        <hr>
+        <div class="grid-3">
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:1em; border:1px solid rgba(255,255,255,0.06);">
+                <h4>🔒 Production-Ready</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">Input validation, error handling, logging, structured responses</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:1em; border:1px solid rgba(255,255,255,0.06);">
+                <h4>📄 Auto‑Generated Docs</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">Swagger UI &amp; ReDoc – documented the moment you run it</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:1em; border:1px solid rgba(255,255,255,0.06);">
+                <h4>🔧 Easy to Extend</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">Modular design – add new platforms, models, or features</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== FOR AGENCIES ====== -->
+    <div class="card">
+        <div class="label-group"><span class="label label-solid">Why This Suite</span></div>
+        <h2 style="font-size: 2rem;">Built for Agencies. Built for Scale.</h2>
+        <div class="grid-2" style="margin-top:1.2rem;">
+            <div style="background:rgba(31,42,93,0.3); border-radius:0.4em; padding:1.2em;">
+                <h4>For Developers</h4>
+                <ul class="bullet-list">
+                    <li>Clean, typed Python codebase</li>
+                    <li>Async FastAPI architecture</li>
+                    <li>Docker‑ready configuration</li>
+                    <li>Environment‑based secrets</li>
+                    <li>Comprehensive README &amp; setup guide</li>
+                </ul>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:1.2em;">
+                <h4>For Automation Agencies</h4>
+                <ul class="bullet-list">
+                    <li>White‑label ready — resell to clients</li>
+                    <li>Multi‑tenant architecture support</li>
+                    <li>High‑margin SaaS backend in days</li>
+                    <li>Replace manual workflows with AI</li>
+                    <li>Single license, unlimited client deployments</li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top:1.5rem; background:rgba(98,150,255,0.08); border-left:4px solid #6296ff; padding:1rem 1.2rem; border-radius:0.2em;">
+            <p style="color:#d0d5de;"><strong>One purchase.</strong> Deploy for yourself or resell to unlimited clients. No recurring licensing fees.</p>
+        </div>
+    </div>
+
+    <!-- ====== PURCHASE / CTA ====== -->
+    <div class="card" id="purchase">
+        <div class="label-group"><span class="label label-solid">Get Started</span></div>
+        <h2 style="font-size: 2rem;">Buy the Codebase. Ship in Days.</h2>
+        <p style="color: #c8ccd4; max-width: 700px;">
+            Instant access to the complete <strong>Ultimate AI Business Intelligence &amp; Marketing Automation Suite</strong>
+            — all four modules, full source code, setup documentation, and API specs. No subscriptions. No restrictions.
+        </p>
+        <div class="grid-3" style="margin: 1.5rem 0;">
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:0.8em; text-align:center;">
+                <div style="font-size:2.2rem;">⬇️</div>
+                <h4>Instant Download</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">Get the full codebase immediately</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:0.8em; text-align:center;">
+                <div style="font-size:2.2rem;">📦</div>
+                <h4>Full Source Code</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">100% yours — modify, extend, resell</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); border-radius:0.4em; padding:0.8em; text-align:center;">
+                <div style="font-size:2.2rem;">📘</div>
+                <h4>Complete Docs</h4>
+                <p style="font-size:0.9rem; color:#b0b6c0;">README, API specs, deployment guide</p>
+            </div>
+        </div>
+        <div class="btn-group">
+            <a href="#" class="btn btn-primary">Buy the Codebase — $8000</a>
+            <a href="#" class="btn btn-outline">View on GitHub</a>
+        </div>
+    </div>
+
+    <!-- ====== FOOTER ====== -->
+    <div class="footer">
+        © 2026 Ultimate AI Suite. All rights reserved. Full Codebase Ownership Transfer.
+        <br>
+        <span style="font-size:0.8rem; color:#6b7078;">Built with ❤️ for developers and agencies</span>
+    </div>
+
+</div>
+</body>
+</html>
